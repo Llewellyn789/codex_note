@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saved Notes · Notes Pulse</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="stylesheet" href="/styles.css" />
+    <meta name="theme-color" content="#050505" />
+  </head>
+  <body data-swipe-right="/">
+    <header class="app-header">
+      <div>
+        <h1>Saved Notes</h1>
+        <p>Browse, sort, and revisit what mattered.</p>
+      </div>
+      <a class="ghost-link" href="/" aria-label="Back to recorder">Record ›</a>
+    </header>
+
+    <main class="single-column">
+      <section class="card" id="controls-card">
+        <label class="muted-label" for="sort-select">Sort notes</label>
+        <select id="sort-select" class="sort-select">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="alpha">A → Z (summary)</option>
+          <option value="length">Longest transcript</option>
+        </select>
+      </section>
+
+      <section class="card notes-card">
+        <ul id="notes-list" class="notes-list"></ul>
+        <p id="empty-state" class="helper-text">No notes yet — head back and capture one.</p>
+      </section>
+    </main>
+
+    <template id="note-item-template">
+      <li class="note-item">
+        <div class="note-header">
+          <time></time>
+          <span class="chip">summary</span>
+        </div>
+        <ul class="summary-list"></ul>
+        <details>
+          <summary>Full transcript</summary>
+          <p class="transcript"></p>
+        </details>
+        <audio controls class="note-audio hidden"></audio>
+      </li>
+    </template>
+
+    <script type="module" src="/scripts/swipe-nav.js"></script>
+    <script type="module" src="/scripts/notes.js"></script>
+  </body>
+</html>

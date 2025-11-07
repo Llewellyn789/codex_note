@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes Pulse</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+    <meta name="theme-color" content="#050505" />
+  </head>
+  <body data-swipe-left="/notes.html">
+    <header class="app-header">
+      <div>
+        <h1>Notes Pulse</h1>
+        <p>Capture, transcribe, and highlight key ideas.</p>
+      </div>
+      <a class="ghost-link" href="/notes.html" aria-label="See saved notes">Saved ›</a>
+    </header>
+
+    <main class="single-column">
+      <section class="card recording-card">
+        <div class="recording-status">
+          <div class="pulse-dot" data-recording-indicator></div>
+          <span data-recording-label>Idle</span>
+        </div>
+
+        <div class="controls">
+          <button id="start-btn" class="primary">Start Recording</button>
+          <button id="stop-btn" class="ghost" disabled>Stop</button>
+        </div>
+
+        <p class="helper-text">
+          Built with the browser's speech APIs. Keep the tab in focus for best results.
+        </p>
+        <p id="speech-warning" class="helper-text warning hidden"></p>
+
+        <audio id="playback" controls class="hidden" aria-label="Last recorded note playback"></audio>
+      </section>
+
+      <section class="card results-card hidden" id="result-card">
+        <h2>Latest Note</h2>
+        <div>
+          <p class="muted-label">Transcript</p>
+          <p id="transcript-output" class="transcript"></p>
+        </div>
+        <div>
+          <p class="muted-label">Key Points</p>
+          <ul id="summary-output" class="summary-list"></ul>
+        </div>
+        <button id="save-btn" class="primary" disabled>Save Note</button>
+      </section>
+    </main>
+
+    <template id="summary-item-template">
+      <li></li>
+    </template>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="/scripts/swipe-nav.js"></script>
+    <script type="module" src="/scripts/main.js"></script>
+  </body>
+</html>
